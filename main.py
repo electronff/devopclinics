@@ -11,7 +11,7 @@ RESPONSE = os.environ["RESPONSE"]
 
 @app.route("/")
 def homepage():
-    msg = {'message': 'This is Home for me...'}
+    msg = {'message': 'This is our Product page...'}
     return json.dumps(msg)
 
 
