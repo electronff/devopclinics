@@ -1,0 +1,112 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: clinicapp
+spec:
+  selector:
+    matchLabels:
+      app: clinicapp
+  replicas: 3 # tells deployment to run 2 pods matching the template
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+
+  template:
+    metadata:
+      labels:
+        app: clinicapp
+    spec:
+      containers:
+      - name: clinicapp
+        image: muritala/devclinic      
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+
+---
+
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: clinicapp-product
+spec:
+  selector:
+    matchLabels:
+      app: clinicapp
+  replicas: 3 # tells deployment to run 2 pods matching the template
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+
+  template:
+    metadata:
+      labels:
+        app: clinicapp
+    spec:
+      containers:
+      - name: clinicapp
+        image: muritala/devclinicproduct      
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+
+---
+
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: clinicapp-review
+spec:
+  selector:
+    matchLabels:
+      app: clinicapp
+  replicas: 3 # tells deployment to run 2 pods matching the template
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+
+  template:
+    metadata:
+      labels:
+        app: clinicapp
+    spec:
+      containers:
+      - name: clinicapp
+        image: muritala/devclinicreview     
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: clinicapp-payment
+spec:
+  selector:
+    matchLabels:
+      app: clinicapp
+  replicas: 3 # tells deployment to run 2 pods matching the template
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+
+  template:
+    metadata:
+      labels:
+        app: clinicapp
+    spec:
+      containers:
+      - name: clinicapp
+        image: muritala/devclinicpayment      
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
